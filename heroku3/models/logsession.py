@@ -18,9 +18,9 @@ class LogSession(BaseResource):
         return "<logsession '{0}'>".format(self.id)
 
     def stream(self, timeout=False):
-        r = requests.get(self.logplex_url, verify=False, stream=True, timeout=timeout)
+        r = requests.get(self.logplex_url, stream=True, timeout=timeout)
         return r.iter_lines()
 
     def get(self, timeout=False):
-        r = requests.get(self.logplex_url, verify=False, stream=True, timeout=timeout)
+        r = requests.get(self.logplex_url, stream=True, timeout=timeout)
         return r.content.decode("utf-8")
