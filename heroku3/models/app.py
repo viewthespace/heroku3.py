@@ -222,11 +222,11 @@ class App(BaseResource):
                 dyno.kill()
         return self
 
-    def run_command_detached(self, command, size=None, env=None):
+    def run_command_detached(self, command, size=None, env=None, time_to_live=None, type=None):
         """Run a remote command but do not wait for the command to complete"""
-        return self.run_command(command, attach=False, printout=False, size=size, env=env)
+        return self.run_command(command, attach=False, printout=False, size=size, env=env, time_to_live=time_to_live, type=type)
 
-    def run_command(self, command, attach=True, printout=True, size=None, env=None):
+    def run_command(self, command, attach=True, printout=True, size=None, env=None, time_to_live=None, type=None):
         """Run a remote command attach=True if you want to capture the output"""
         if attach:
             attach = True
@@ -237,6 +237,12 @@ class App(BaseResource):
 
         if size:
             payload['size'] = size
+
+        if time_to_live:
+            payload['time_to_live'] = time_to_live
+
+        if type:
+            payload['type'] = type
 
         r = self._h._http_resource(
             method='POST',
