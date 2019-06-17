@@ -224,7 +224,7 @@ class App(BaseResource):
 
     def run_command_detached(self, command, size=None, env=None, time_to_live=None, type=None):
         """Run a remote command but do not wait for the command to complete"""
-        return self.run_command(command, attach=False, printout=False, size=size, env=env, time_to_live=None, type=None)
+        return self.run_command(command, attach=False, printout=False, size=size, env=env, time_to_live=time_to_live, type=type)
 
     def run_command(self, command, attach=True, printout=True, size=None, env=None, time_to_live=None, type=None):
         """Run a remote command attach=True if you want to capture the output"""
