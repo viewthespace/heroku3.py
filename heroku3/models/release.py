@@ -3,7 +3,7 @@ from .slug import Slug
 
 
 class Release(BaseResource):
-    _strs = ['description', 'id', 'user', 'commit', 'addon_plan_names']
+    _strs = ['description', 'id', 'user', 'commit', 'addon_plan_names', 'status']
     _ints = ['version']
     _dates = ['created_at', 'updated_at']
     _map = {'slug': Slug, 'user': User}
